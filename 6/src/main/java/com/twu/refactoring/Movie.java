@@ -5,7 +5,7 @@ public class Movie {
 	public static final int  REGULAR = 0;
 	public static final int  NEW_RELEASE = 1;
 
-	private String title;
+	private final String title;
 	private int priceCode;
 
 	public Movie(String title, int priceCode) {
@@ -23,6 +23,15 @@ public class Movie {
 
 	public String getTitle () {
 		return title;
+	}
+
+	public Movietype returnTypeMovie(int priceCode) {
+		if (priceCode == 0) {
+			return new RegularMovie();
+		} else if (priceCode == 1) {
+			return new NewReleaseMovie();
+		}
+		return new ChildrensMovie();
 	}
 }
 
