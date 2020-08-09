@@ -9,6 +9,10 @@ package com.twu.refactoring;
  */
 public class OrderReceipt {
     private Order order;
+    private final static double TAX = 0.10;
+    private final static String RECEIPT_TITLE = "======Printing Orders======\n";
+	private final static String SALES_TAX_STR = "Sales Tax";
+	private final static String TOTAL_AMOUNT_STR = "Total Amount";
 
     public OrderReceipt(Order order) {
         this.order = order;
@@ -16,7 +20,7 @@ public class OrderReceipt {
 
 	public String printReceipt() {
 		StringBuilder orderReceipt = new StringBuilder();
-		orderReceipt.append("======Printing Orders======\n")
+		orderReceipt.append(RECEIPT_TITLE)
 				.append(order.getCustomerName())
 				.append(order.getCustomerAddress());
 		double totSalesTx = 0d;
@@ -30,15 +34,16 @@ public class OrderReceipt {
 					.append('\t')
 					.append(lineItem.totalAmount())
 					.append('\n');
-            double salesTax = lineItem.totalAmount() * .10;
+            double salesTax = lineItem.totalAmount() * TAX;
             totSalesTx += salesTax;
             tot += lineItem.totalAmount() + salesTax;
 		}
-		orderReceipt.append("Sales Tax")
+		orderReceipt.append(SALES_TAX_STR)
 				.append('\t')
 				.append(totSalesTx)
-				.append("Total Amount")
-				.append('\t').append(tot);
+				.append(TOTAL_AMOUNT_STR)
+				.append('\t')
+				.append(tot);
 		return orderReceipt.toString();
 	}
 }
