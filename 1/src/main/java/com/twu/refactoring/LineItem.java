@@ -1,30 +1,30 @@
 package com.twu.refactoring;
 
 public class LineItem {
-	private String desc;
-	private double p;
-	private int qty;
+	private String describe;
+	private double price;
+	private int quantity;
 
-	public LineItem(String desc, double p, int qty) {
+	public LineItem(String describe, double price, int quantity) {
 		super();
-		this.desc = desc;
-		this.p = p;
-		this.qty = qty;
+		this.describe = describe;
+		this.price = price;
+		this.quantity = quantity;
 	}
 
 	public String getDescription() {
-		return desc;
+		return describe;
 	}
 
 	public double getPrice() {
-		return p;
+		return price;
 	}
 
 	public int getQuantity() {
-		return qty;
+		return quantity;
 	}
 
     double totalAmount() {
-        return p * qty;
+        return price * quantity;
     }
 }
